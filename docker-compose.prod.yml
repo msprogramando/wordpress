@@ -1,0 +1,18 @@
+version: '3.7'
+services:
+  nginx:
+    image: registry.gitlab.com/programando/wordpress:${COMMIT_ID}
+    networks:
+      - traefik-public
+    deploy:
+      replicas: 1
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.app-ui.entrypoints=websecure"
+        - "traefik.http.services.app-ui.loadbalancer.server.port=4200"
+        - "traefik.http.routers.app-ui.rule=Host(`programando-wp.de`)"
+        - "traefik.http.routers.app-ui.tls.certresolver=http"
+
+networks:
+    traefik-public:
+        external: true

@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+
+  wpcli:
+    depends_on:
+      - db
+    image: "wordpress:cli"
+    volumes:
+      - "./wordpress:/var/www/html"
+    environment:
+      WORDPRESS_DB_HOST: "db:3306"
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: password
+      WORDPRESS_DB_PREFIX: wp_
+    entrypoint: wp
+    command: "search-replace https://www.programando-wp.de http://www.programando-wp.docker"
+
+networks:
+ default:
+   external:
+     name: nginx-proxy

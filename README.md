@@ -1,3 +1,4 @@
 # Some Wordpress Code Examples
-## pro-rest
-Implements some Rest Endpoints for WooCommerce and Laravel
+## rest-plugin
+- Implements some Rest Endpoints for WooCommerce and Laravel
+- Provides an example hook when an order was placed

@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: REST Plugin
+Plugin Name: Programando Endpoints
 Description: Provides REST Endpoints
 Version: 0.0.1
 Author: programando.de
@@ -12,15 +12,19 @@ Domain Path: /languages
 namespace Pro_Rest;
 
 use Pro_Rest\Endpoints\Order\Update_Status;
-use Pro_Rest\Endpoints\User\Update_User;
+use Pro_Rest\Endpoints\Product\Create_Product;
+use Pro_Rest\Endpoints\Product\Update_Product;
+use Pro_Rest\Endpoints\Stocks\Update_Stocks;
+use Pro_Rest\Endpoints\Variation\Update_Variation;
 
+use Pro_Rest\Endpoints\User\Update_User;
 use Pro_Rest\Hooks\Order\Order_Processed;
 use Pro_Rest\Hooks\User\User_Registration;
 use Pro_Rest\Hooks\User\User_Status_Column;
 
 require( trailingslashit( dirname( __FILE__ ) ) . 'inc/autoloader.php' );
 
-add_action('plugins_loaded', 'Bieglo_Rest\endpoints_init');
+add_action('plugins_loaded', 'Pro_Rest\endpoints_init');
 
 function endpoints_init(){
     new Update_Product();
